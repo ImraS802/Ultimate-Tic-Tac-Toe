@@ -1,0 +1,98 @@
+/* center everything */
+
+/* symbols for player 1 and 2 as background images*/
+
+/* Show winning path on website by picture overlay 8 images */
+
+/* make free and taken grids obvious in color */
+
+
+ * {
+  box-sizing: border-box;
+  font-family: 'Exo 2', arial, sans-serif;
+}
+
+body {
+  margin: 20px;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  margin-bottom: 40px;
+  color:hsl(192, 85%, 56%);
+}
+
+.button-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-div button {
+  margin-bottom: 20px;
+  color: black;
+  padding: 5px 30px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.small-grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 150px;
+  margin: 0px auto;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.cell {
+  background-color: #f5f5f5;
+  border: 1px solid rgba(0,0,0,0.2);
+  cursor: pointer;
+  font-size: 14px;
+  width: calc(100% / 3 - 2px);
+  height: 50px; 
+  
+}
+
+#cell1 {
+  background-image: url('../images/circle.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+} 
+
+#cell2 {
+  background-image: url('../images/triangle.png');
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position-x: center;
+  background-position-y: center;
+  cursor: pointer;
+} 
+
+.score {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.player-one {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.player-two {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+img {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+}

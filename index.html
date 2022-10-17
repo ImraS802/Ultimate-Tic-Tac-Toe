@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ultimate Tic Tac Toe</title>
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <main></main>
 <body>
 <h1>Ultimate Tic Tac Toe</h1>
-<div class="controls-wrapper">
-      <button id="start">Start</button>
-    </div>
-    <div class="big-grid-wrapper">
-      <div class="small-grid">
-        <div class="cell"></div>
-        <div class="cell"></div>
+      <div class="button-div"><button id="start">Start</button></div>
+      <div class="small-grid-container">
+        <div class="cell" id="cell1"></div>
+        <div class="cell" id="cell2"></div>
         <div class="cell"></div>
         <div class="cell"></div>
         <div class="cell"></div>
@@ -24,11 +22,17 @@
         <div class="cell"></div>
         <div class="cell"></div>
       </div>
-    </div>
 <!-- another 8 small grids, with classes to differentiate visually btw free and taken grids-->
+<div class="score">
 <p><span id="score-display">0</span></p>
-<p>Player one</p>
-<p>Player two</p>
+</div>
+<div class="player-one">
+<p>Player one</p><img src='../images/circle.png' alt="circle" id="circle">
+</div>
+</br>
+<div class="player-two">
+<p>Player two</p><img src='../images/triangle.png' alt="circle" id="circle">
+</div>
 <script src="scripts/app.js" charset="utf-8"></script>
 </body>
 </html>

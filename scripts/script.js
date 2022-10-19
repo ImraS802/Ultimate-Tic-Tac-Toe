@@ -13,7 +13,8 @@ smallGridStatus.fill(null)
   const win = document.getElementById("win")
   const scoreField = document.getElementById("score-field")
   const scoreText = document.getElementById("score-display")
-  const startButton = document.getElementById("start")
+  const restartButton = document.getElementById("restart")
+  restartButton.addEventListener("click", restartGame)
 
 // ! Executions
 
@@ -57,6 +58,7 @@ smallGridStatus.fill(null)
       if (cellContent0 != null && cellContent0 === cellContent1 && cellContent0 === cellContent2) {
         win.classList.add(cssClass)
         endGameScreen(cellContent0)
+        return
       }
       }
       // look if there is a draw
@@ -73,6 +75,14 @@ if (everyCellTaken){
       }
       endGameScreen.className = "appear"
       endGameText.innerText = announcement
+    }
+
+    function restartGame(){
+      win.className = "win"
+      endGameScreen.className = "disappear"
+      smallGridStatus.fill(null)
+      cells.forEach((cell) => (cell.innerText = ""))
+      currentPlayer = playerOne
     }
 
     // checking win combinations via cell combinations and win-classes

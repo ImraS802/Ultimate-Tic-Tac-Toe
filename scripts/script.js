@@ -3,89 +3,90 @@ const playerTwo = "triangle"
 const smallGridCells = document.querySelectorAll(".cell")
 let currentPlayer = playerOne
 
-const smallGridStatus = Array(smallGridCells.length)
-smallGridStatus.fill(null)
-
-
+const smallGridStatus = Array(smallGridCells.length) // to track where the symbols are being made on the grid
+smallGridStatus.fill(null)  //9 items in array set to null
 
   // ! Elements
 
   const win = document.getElementById("win")
   const scoreField = document.getElementById("score-field")
-  const scoreText = document.getElementById("score-display")
+  const scoreDisplay = document.getElementById("score-display")
   const restartButton = document.getElementById("restart")
   restartButton.addEventListener("click", restartGame)
 
 // ! Executions
-
-  smallGridCells.forEach((cell) => cell.addEventListener("click", cellClick)
-  )
- // checks if score field is appearing
-  function cellClick(event) {
-    if (scoreField.classList.contains("appear")) {
-      return; // function stops here
+// add eventListener to each cell
+  smallGridCells.forEach((smallGridCell) => smallGridCell.addEventListener("click", smallGridCellClick))
+ // defining function smallGridCellClick; checks which cell was clicked; and if score field is appearing
+  function smallGridCellClick(event) {
+    if (scoreField.classList.contains('appear')) {
+      return; // if scorefield is appaearing the function stops here, if not then it continues
     }
-
-    // tells which cell was clicked
-    const cell = event.target
-    const cellNum = cell.dataset.index
+    const cell = event.target // tells which cell was clicked
+    const cellNum = cell.dataset.index // refers to the data-index in html
     // checking if cell has a value (circle or triangle) already
-    if(cell.innerText !="") {
+    if(cell.innerText != "") { // if cell doesn't equal to blank then there must be circle or triangle
       return
     }
-// depending on value a certain player has to play; array from 0 until 8 (9 cells)
-    cell.innerText = currentPlayer
+// depending on the value a certain player has to play; array from 0 to 8 (9 cells)
     if(currentPlayer === playerOne){
+      cell.classList.add(playerOne)
       smallGridStatus[cellNum] = playerOne
       currentPlayer = playerTwo
     } else {
-    smallGridStatus[cellNum] = playerTwo 
+    cell.classList.add(playerTwo)
+      smallGridStatus[cellNum] = playerTwo
       currentPlayer = playerOne
     }
 
     verifyWhoWon()
     }
 
-    // loop through win combinations to look if there is a winner 
-    function verifyWhoWon() {
-      for (const winCombi of winCombis) {
-      const combination = winCombi.combination
+
+        // loop through win combinations to look if there is a win 
+        function verifyWhoWon() {
+      for (const winCombi of winCombis) { // receiving the different win combinations from below 
+      const combination = winCombi.combination // extract combination and cssClass from array of winCombis
       const cssClass = winCombi.cssClass 
-      const cellContent0 = smallGridStatus[combination[0]]
+      const cellContent0 = smallGridStatus[combination[0]] // get values from each cell
       const cellContent1 = smallGridStatus[combination[1]]
       const cellContent2 = smallGridStatus[combination[2]]
-
+// checking if cell content of at least 3 cells equals each other
       if (cellContent0 != null && cellContent0 === cellContent1 && cellContent0 === cellContent2) {
         win.classList.add(cssClass)
-        endGameScreen(cellContent0)
+        endGameScreen(cellContent0) // when all cells match this will be the winner
         return
+      } 
       }
-      }
-      // look if there is a draw
+
+// look if there is a draw
 const everyCellTaken = smallGridStatus.every((cell) => cell !== null)
-if (everyCellTaken){
-  endGameScreen(null)
+if (everyCellTaken){       // if every cell taken show the endGameScreen
+  endGameScreen(null)     //if winnerAnnouncement is null it will show a draw, if it isn't filled with null then it shows either triangle or circle
 }
+
     }
 
-    function endGameScreen(winnerAnnouncement){
-      let announcement = "It's a draw."
-      if (winnerAnnouncement !== null){
-        announcement = `The winner is ${winnerAnnouncement}`
+// make the winner announcement on the screen display
+    function endGameScreen(winnerAnnouncement){  //cellContent0
+      let announcement = "It's a draw."          // is shown by default
+      if (winnerAnnouncement != null){
+        announcement = `The winner is: ${winnerAnnouncement}`
       }
-      endGameScreen.className = "appear"
-      endGameText.innerText = announcement
+      scoreField.className = "appear" // "disappear" class is replaced; change DOM
+      scoreDisplay.innerText = announcement
     }
 
+// restart buttom
     function restartGame(){
-      win.className = "win"
-      endGameScreen.className = "disappear"
+      win.className = "win" //replacing previous class
+      scoreField.className = "disappear" 
       smallGridStatus.fill(null)
-      cells.forEach((cell) => (cell.innerText = ""))
+      smallGridCells.forEach((smallGridCell) => (smallGridCell.innerText = "")) // delete all content in cells to make them empty
       currentPlayer = playerOne
     }
 
-    // checking win combinations via cell combinations and win-classes
+// checking for win combinations via cell combinations and win-classes
 const winCombis = [
 {combination: [0, 1, 2], cssClass: "win-rowOne"}, // rows
 {combination: [3, 4, 5], cssClass: "win-rowTwo"},
@@ -96,42 +97,3 @@ const winCombis = [
 {combination: [0, 4, 8], cssClass: "win-diagonalOne"}, // diagonals
 {combination: [2, 4, 6], cssClass: "win-diagonalTwo"}
 ]
-  
-
-  
-
-/* function grid(item) {
-    arrays with numerical values to reperesent condition of cells, function checks values of cell
-  }
-
-  function
-loop through winConstellation
-Checking for cell values (0, 1, 2) with mathematical operators
-Write victory condition to let grid object know that small grid is won
-Memorize win by setting winConstellation to player value
-call function each time a cell is chosen to check if grid is won (true or false) -> alert which player has won on website
-print in DOM
-
-function isChosen() if else, returns true if this grid can be used for cell choosing
-if nextGrid has been won the following player can play in a grid he chooses by himself, 
-set nextGrid to null to indicate free grids 
-
-
-  function draw() {
-    end game in small grid with a draw via a for loop -> alert in message it's a draw
-  }
-
-  function endGame() to end game if all grids have been won, check via if else return true or false
-
-  function finalWinner () for player who has won the most grids
-if score of player 1 is higher than player 2 he wins
-else player two wins
- */
-// ! Events
-/*
-  smallGridOne.addEventListener('click', handleClick)
-  all 9 grids
-  */
-//}
-
-//document.addEventListener('DOMContentLoaded', init)

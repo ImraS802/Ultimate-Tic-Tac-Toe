@@ -6,15 +6,13 @@ let currentPlayer = playerOne
 const smallGridStatus = Array(smallGridCells.length) // to track where the symbols are being made on the grid
 smallGridStatus.fill(null)  //9 items in array set to null
 
-  // ! Elements
-
   const win = document.getElementById("win")
   const scoreField = document.getElementById("score-field")
   const scoreDisplay = document.getElementById("score-display")
   const restartButton = document.getElementById("restart")
   restartButton.addEventListener("click", restartGame)
 
-// ! Executions
+
 // add eventListener to each cell
   smallGridCells.forEach((smallGridCell) => smallGridCell.addEventListener("click", smallGridCellClick))
  // defining function smallGridCellClick; checks which cell was clicked; and if score field is appearing
@@ -69,9 +67,9 @@ if (everyCellTaken){       // if every cell taken show the endGameScreen
 
 // make the winner announcement on the screen display
     function endGameScreen(winnerAnnouncement){  //cellContent0
-      let announcement = "It's a draw."          // is shown by default
+      let announcement = "It's a draw. 🤷‍♀️"          // is shown by default
       if (winnerAnnouncement != null){
-        announcement = `The winner is: ${winnerAnnouncement}`
+        announcement = `The winner is: ${winnerAnnouncement} 🏆`
       }
       scoreField.className = "appear" // "disappear" class is replaced; change DOM
       scoreDisplay.innerText = announcement

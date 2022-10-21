@@ -79,10 +79,11 @@ if (everyCellTaken){       // if every cell taken show the endGameScreen
 
 // restart buttom
     function restartGame(){
+      console.log("restart")
       win.className = "win" //replacing previous class
       scoreField.className = "disappear" 
       smallGridStatus.fill(null)
-      smallGridCells.forEach((smallGridCell) => (smallGridCell.innerText = "")) // delete all content in cells to make them empty
+      smallGridCells.forEach((smallGridCell) => (smallGridCell.className = "cell")) // delete all content in cells to make them empty
       currentPlayer = playerOne
     }
 

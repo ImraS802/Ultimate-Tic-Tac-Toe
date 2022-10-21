@@ -5,7 +5,7 @@
 
 body {
   margin: 20px;
-  background-color: rgb(21, 121, 121);
+  background-color: #ADEFD1FF;
 }
 
 h1 {
@@ -13,7 +13,7 @@ h1 {
   align-items: center;
   justify-content: center; 
   margin-bottom: 40px;
-  color:hsl(192, 85%, 56%);
+  color: #00203FFF;
 }
 
 .button-div {
@@ -24,13 +24,14 @@ h1 {
 
 .button-div button {
   margin-bottom: 20px;
-  color: black;
+  color: white;
   padding: 5px 30px;
   cursor: pointer;
   border-radius: 15px;
-  background-color: #0dd9e7;
-  border: solid 2px #0dd9e7;
+  background-color: #00203FFF;
+  border: solid 2px #00203FFF;
   font-weight: bold;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.7);
 }
 
 .small-grid-container {
@@ -75,12 +76,14 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center; 
+  color: #00203FFF;
 }
 
 .player-two {
   display: flex;
   align-items: center;
   justify-content: center; 
+  color: #00203FFF;
 }
 
 img {
@@ -115,7 +118,7 @@ top: 81%;
 .win-columnOne {
 height: 100%;
 width: 5px;
-right: 16%;
+left: 16%;
 }
 
 .win-columnTwo {
@@ -127,7 +130,7 @@ left: 49%;
 .win-columnThree {
 height: 100%;
 width: 5px;
-left: 15%;
+right: 15%;
 }
 
 .win-diagonalOne{
@@ -150,7 +153,7 @@ transform: skewY(-45deg);
 display: flex;
 align-items: center;
 justify-content: center; 
-color:#081455;
+color:#00203FFF
 }
 
 .appear {
